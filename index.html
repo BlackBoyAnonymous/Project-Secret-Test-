@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Tracker</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Timer</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div id="app">
-        <h1>Study Tracker</h1>
-        
-        <!-- Session List -->
-        <div id="session-list">
-            <h2>Your Sessions</h2>
-            <ul id="sessions"></ul>
-        </div>
+  <header>Study Timer by You</header>
+  <main>
+    <section>
+      <div id="timer-display">25:00</div>
+      <div>
+        <button id="start-btn" class="start">Start</button>
+        <button id="stop-btn" class="stop">Stop</button>
+      </div>
+    </section>
 
-        <!-- Create Session -->
-        <input type="text" id="session-name" placeholder="Session Name">
-        <button id="create-session">Create Session</button>
+    <section>
+      <h3>Study Log</h3>
+      <ul id="study-log"></ul>
+    </section>
+  </main>
 
-        <!-- Timer -->
-        <div id="timer-section" style="display:none;">
-            <h2>Study Timer</h2>
-            <div id="timer">00:00</div>
-            <button id="start-timer">Start Timer</button>
-            <button id="end-session" style="display:none;">End Session</button>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
