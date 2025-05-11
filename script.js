@@ -1,32 +1,47 @@
-let time = 1500; // 25 minutes
 let timer;
+let timeLeft = 25 * 60;
 let running = false;
 
+const timerDisplay = document.getElementById('timer-display');
+const startBtn = document.getElementById('start-btn');
+const stopBtn = document.getElementById('stop-btn');
+const logList = document.getElementById('study-log');
+
 function updateDisplay() {
-  const minutes = Math.floor(time / 60).toString().padStart(2, '0');
-  const seconds = (time % 60).toString().padStart(2, '0');
-  document.getElementById('timer').innerText = `${minutes}:${seconds}`;
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
 function startTimer() {
   if (running) return;
   running = true;
   timer = setInterval(() => {
-    if (time > 0) {
-      time--;
+    if (timeLeft > 0) {
+      timeLeft--;
       updateDisplay();
     } else {
       clearInterval(timer);
-      alert("Time's up!");
+      running = false;
+      addLog();
+      timeLeft = 25 * 60;
+      updateDisplay();
     }
   }, 1000);
 }
 
-function resetTimer() {
+function stopTimer() {
   clearInterval(timer);
-  time = 1500;
   running = false;
-  updateDisplay();
 }
+
+function addLog() {
+  const li = document.createElement('li');
+  li.textContent = `Studied for 25 minutes at ${new Date().toLocaleTimeString()}`;
+  logList.prepend(li);
+}
+
+startBtn.addEventListener('click', startTimer);
+stopBtn.addEventListener('click', stopTimer);
 
 updateDisplay();
